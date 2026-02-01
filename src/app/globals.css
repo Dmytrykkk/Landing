@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --university-blue: #1e40af;
+  --university-blue-light: #3b82f6;
+  --university-blue-dark: #1e3a8a;
+  --university-blue-50: #eff6ff;
+  --university-blue-100: #dbeafe;
+  --primary-university-blue: #0047AB;
+  --primary-university-blue-dark: #003380;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-university-blue: var(--university-blue);
+  --color-university-blue-light: var(--university-blue-light);
+  --color-university-blue-dark: var(--university-blue-dark);
+  --color-primary-university-blue: var(--primary-university-blue);
+  --color-primary-university-blue-dark: var(--primary-university-blue-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--university-blue-light);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--university-blue);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --university-blue: #003d82;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes hero-blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.hero-animate-blob {
+  animation: hero-blob 7s infinite;
+}
+
+.hero-blob-delay-2 {
+  animation-delay: 2s;
+}
+
+.hero-blob-delay-4 {
+  animation-delay: 4s;
+}
+
+@media print {
+  .skip-link,
+  header,
+  footer {
+    display: none;
+  }
+}
