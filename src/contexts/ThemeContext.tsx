@@ -13,11 +13,6 @@ const STORAGE_KEY = "theme";
 
 export type Theme = "light" | "dark";
 
-function getSystemTheme(): Theme {
-  if (typeof window === "undefined") return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 function getStoredTheme(): Theme | null {
   if (typeof window === "undefined") return null;
   const stored = localStorage.getItem(STORAGE_KEY);
@@ -70,7 +65,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       if (getStoredTheme() === null) {
-        const next = media.matches ? "dark" : "light";
+        // Default is light; only adjust on system changes if user never chose a theme.
+        const next: Theme = media.matches ? "dark" : "light";
         setThemeState(next);
         applyTheme(next);
       }

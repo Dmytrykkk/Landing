@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 
+type NewsletterRequestBody = {
+  email?: unknown;
+  consent?: unknown;
+  company?: unknown; // honeypot
+};
+
 export async function POST(req: Request) {
   let body: unknown;
   try {
@@ -8,9 +14,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
 
-  const email = typeof (body as any)?.email === "string" ? String((body as any).email) : "";
-  const consent = Boolean((body as any)?.consent);
-  const hp = typeof (body as any)?.company === "string" ? String((body as any).company) : "";
+  const b = (body ?? {}) as NewsletterRequestBody;
+  const email = typeof b.email === "string" ? b.email : "";
+  const consent = b.consent === true;
+  const hp = typeof b.company === "string" ? b.company : "";
 
   // Honeypot: bots will often fill hidden fields.
   if (hp) return NextResponse.json({ ok: true });

@@ -14,9 +14,6 @@ function toDateOnly(iso: string): string {
 function monthStart(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), 1);
 }
-function monthEnd(d: Date) {
-  return new Date(d.getFullYear(), d.getMonth() + 1, 0);
-}
 
 export default function EventsCalendar() {
   const { events } = useOfficialData();
@@ -28,7 +25,6 @@ export default function EventsCalendar() {
   }, [events]);
 
   const start = monthStart(viewMonth);
-  const end = monthEnd(viewMonth);
 
   const byDay = useMemo(() => {
     const map = new Map<string, EventItem[]>();

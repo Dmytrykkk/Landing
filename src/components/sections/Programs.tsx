@@ -1,14 +1,14 @@
-\"use client\";
+"use client";
 
-import { useMemo } from \"react\";
-import Link from \"next/link\";
-import type { StudyLevel } from \"@/types/official-data\";
-import { useOfficialData } from \"@/hooks/useOfficialData\";
+import { useMemo } from "react";
+import Link from "next/link";
+import type { StudyLevel } from "@/types/official-data";
+import { useOfficialData } from "@/hooks/useOfficialData";
 
 const LEVEL_LABEL: Record<StudyLevel, string> = {
-  bachelor: \"Bachelor\",
-  master: \"Master\",
-  phd: \"PhD\",
+  bachelor: "Bachelor",
+  master: "Master",
+  phd: "PhD",
 };
 
 export default function Programs() {
