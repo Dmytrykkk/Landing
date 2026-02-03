@@ -61,7 +61,7 @@ export default function Hero() {
               Дізнатися більше
             </a>
             <a
-              href="https://t.me/fknfm_ksu"
+              href="https://t.me/kipiek"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleCTAClick("hero_telegram")}
