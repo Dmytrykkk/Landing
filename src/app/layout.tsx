@@ -99,10 +99,10 @@ export default function RootLayout({
   const themeScript = `
 (function(){
   var k='theme'; var s=localStorage.getItem(k);
-  var d=typeof window!=='undefined'&&window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var dark=s==='dark'||(s!=='light'&&d);
-  document.documentElement.classList.add(dark?'dark':'light');
-  document.documentElement.classList.remove(dark?'light':'dark');
+  // Requirement: default site theme is light (white), regardless of system theme.
+  var dark=s==='dark';
+  document.documentElement.classList.add(dark ? 'dark' : 'light');
+  document.documentElement.classList.remove(dark ? 'light' : 'dark');
 })();
   `.trim();
 

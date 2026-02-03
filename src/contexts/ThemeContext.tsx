@@ -28,7 +28,8 @@ function getStoredTheme(): Theme | null {
 function getResolvedTheme(): Theme {
   const stored = getStoredTheme();
   if (stored) return stored;
-  return getSystemTheme();
+  // Requirement: default site theme is white (light), regardless of system theme.
+  return "light";
 }
 
 function applyTheme(theme: Theme) {

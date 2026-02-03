@@ -36,12 +36,7 @@
   --color-primary-university-blue-dark: var(--primary-university-blue-dark);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Requirement: default theme is light; do not auto-switch on system preference. */
 
 body {
   background: var(--background);
