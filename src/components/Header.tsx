@@ -17,7 +17,10 @@ const NAV_LINKS = [
   { href: "#why-fknfm", label: "Чому ми" },
   { href: "#programs", label: "Програми" },
   { href: "#learning-format", label: "Формат навчання" },
+  { href: "#events", label: "Події" },
   { href: "#faq", label: "FAQ" },
+  { href: "#licenses", label: "Ліцензії" },
+  { href: "#newsletter", label: "Новини" },
 ] as const;
 
 export default function Header() {

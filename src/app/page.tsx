@@ -42,6 +42,21 @@ const SuccessStories = dynamic(() => import("@/components/sections/SuccessStorie
   ssr: true,
 });
 
+const EventsCalendar = dynamic(() => import("@/components/sections/EventsCalendar"), {
+  loading: () => <SectionSkeleton className="bg-white" />,
+  ssr: true,
+});
+
+const Accreditation = dynamic(() => import("@/components/sections/Accreditation"), {
+  loading: () => <SectionSkeleton className="bg-white" />,
+  ssr: true,
+});
+
+const Newsletter = dynamic(() => import("@/components/sections/Newsletter"), {
+  loading: () => <SectionSkeleton className="bg-gray-50" />,
+  ssr: true,
+});
+
 const Footer = dynamic(() => import("@/components/sections/footer"), {
   loading: () => (
     <footer className="py-8 bg-gray-100 dark:bg-gray-800" aria-hidden>
@@ -204,8 +219,11 @@ export default function HomePage() {
         </SectionReveal>
         <LearningFormat />
         <SuccessStories />
+        <EventsCalendar />
+        <Accreditation />
         <FAQ />
         <ConsultationForm />
+        <Newsletter />
         <Footer />
       </main>
     </>
