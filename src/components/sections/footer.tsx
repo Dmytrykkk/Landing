@@ -96,7 +96,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" role="list">
               <li role="listitem">
                 <a
-                  href="https://t.me/fknfm_ksu"
+                  href="https://t.me/kipiek"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-gray-900 rounded transition-colors"
