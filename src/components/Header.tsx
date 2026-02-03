@@ -142,9 +142,10 @@ export default function Header() {
 
             <button
               type="button"
-              className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 aria-expanded={menuOpen}"
+              className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2"
               aria-label={menuOpen ? "Закрити меню" : "Відкрити меню"}
               aria-controls="mobile-menu"
+              aria-expanded={menuOpen}
               onClick={() => setMenuOpen((prev) => !prev)}
             >
               <span className="sr-only">{menuOpen ? "Закрити меню" : "Відкрити меню"}</span>
