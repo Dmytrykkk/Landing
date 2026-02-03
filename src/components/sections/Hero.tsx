@@ -2,15 +2,6 @@
 
 import Image from "next/image";
 
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      targetId: string,
-      config?: Record<string, string | number | boolean | undefined>
-    ) => void;
-  }
-}
 
 const HERO_IMAGE_SRC = "/images/hero.webp";
 
