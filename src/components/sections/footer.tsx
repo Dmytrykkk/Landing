@@ -96,7 +96,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" role="list">
               <li role="listitem">
                 <a
-                  href="https://t.me/kipiek"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 rounded transition-colors"
@@ -107,7 +107,7 @@ export default function Footer() {
               </li>
               <li role="listitem">
                 <a
-                  href="https://www.facebook.com/kspu.edu.ua"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 rounded transition-colors"
@@ -118,7 +118,7 @@ export default function Footer() {
               </li>
               <li role="listitem">
                 <a
-                  href="https://www.instagram.com/kspu.edu.ua"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 rounded transition-colors"
@@ -129,7 +129,7 @@ export default function Footer() {
               </li>
               <li role="listitem">
                 <a
-                  href="https://www.youtube.com/@kspu"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 rounded transition-colors"
@@ -140,7 +140,7 @@ export default function Footer() {
               </li>
               <li role="listitem">
                 <a
-                  href="https://www.tiktok.com/@kspu"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 rounded transition-colors"
