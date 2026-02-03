@@ -19,7 +19,6 @@ export async function POST(req: Request) {
   const consent = b.consent === true;
   const hp = typeof b.company === "string" ? b.company : "";
 
-  // Honeypot: bots will often fill hidden fields.
   if (hp) return NextResponse.json({ ok: true });
 
   if (!email || !email.includes("@")) {
@@ -29,8 +28,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Consent is required" }, { status: 400 });
   }
 
-  // Placeholder: integrate Mailchimp/Brevo/ConvertKit or DB storage later.
-  // For now we just log to server output.
   console.log("[newsletter] subscription", { email, consent, at: new Date().toISOString() });
 
   return NextResponse.json({ ok: true });

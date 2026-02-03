@@ -7,10 +7,12 @@ import ClientHeader from "@/components/ClientHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   display: "swap",
   preload: true,
   adjustFontFallback: true,
+  fallback: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -19,6 +21,7 @@ const geistMono = Geist_Mono({
   display: "swap",
   preload: false,
   adjustFontFallback: true,
+  fallback: ["Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
 });
 
 export const metadata: Metadata = {
@@ -99,7 +102,6 @@ export default function RootLayout({
   const themeScript = `
 (function(){
   var k='theme'; var s=localStorage.getItem(k);
-  // Requirement: default site theme is light (white), regardless of system theme.
   var dark=s==='dark';
   document.documentElement.classList.add(dark ? 'dark' : 'light');
   document.documentElement.classList.remove(dark ? 'light' : 'dark');

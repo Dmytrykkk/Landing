@@ -42,7 +42,7 @@ const SuccessStories = dynamic(() => import("@/components/sections/SuccessStorie
   ssr: true,
 });
 
-const EventsCalendar = dynamic(() => import("@/components/sections/EventsCalendar"), {
+const EventsCalendar = dynamic(() => import("@/components/sections/EventsCalendarWrapper"), {
   loading: () => <SectionSkeleton className="bg-white" />,
   ssr: true,
 });
@@ -208,7 +208,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
       />
-      <main id="main-content" tabIndex={-1} className="pt-16 sm:pt-20">
+      <main id="main-content" tabIndex={-1} className="pt-16 sm:pt-20 lg:pt-24">
         <ScrollTracker />
         <Hero />
         <SectionReveal>
@@ -217,13 +217,27 @@ export default function HomePage() {
         <SectionReveal>
           <Programs />
         </SectionReveal>
-        <LearningFormat />
-        <SuccessStories />
-        <EventsCalendar />
-        <Accreditation />
-        <FAQ />
-        <ConsultationForm />
-        <Newsletter />
+        <SectionReveal>
+          <LearningFormat />
+        </SectionReveal>
+        <SectionReveal>
+          <SuccessStories />
+        </SectionReveal>
+        <SectionReveal>
+          <EventsCalendar />
+        </SectionReveal>
+        <SectionReveal>
+          <Accreditation />
+        </SectionReveal>
+        <SectionReveal>
+          <FAQ />
+        </SectionReveal>
+        <SectionReveal>
+          <ConsultationForm />
+        </SectionReveal>
+        <SectionReveal>
+          <Newsletter />
+        </SectionReveal>
         <Footer />
       </main>
     </>

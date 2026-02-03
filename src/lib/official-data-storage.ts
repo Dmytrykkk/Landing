@@ -15,7 +15,6 @@ function isObject(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null;
 }
 
-// Minimal validation: ensure expected top-level fields exist.
 export function coerceOfficialData(input: unknown): OfficialData | null {
   if (!isObject(input)) return null;
   const version = typeof input.version === "number" ? input.version : OFFICIAL_DATA_VERSION;

@@ -12,11 +12,64 @@
   --university-blue-100: #dbeafe;
   --primary-university-blue: #0047AB;
   --primary-university-blue-dark: #003380;
+  
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  --section-padding-mobile: 3rem;
+  --section-padding-tablet: 4rem;
+  --section-padding-desktop: 5rem;
+  --container-max-width: 1280px;
+  --content-max-width: 1200px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --gray-50: #1f2937;
+  --gray-100: #374151;
+  --gray-200: #4b5563;
+  --gray-300: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-500: #d1d5db;
+  --gray-600: #e5e7eb;
+  --gray-700: #f3f4f6;
+  --gray-800: #f9fafb;
+  --gray-900: #ffffff;
 }
 
 .light {
@@ -36,17 +89,66 @@
   --color-primary-university-blue-dark: var(--primary-university-blue-dark);
 }
 
-/* Requirement: default theme is light; do not auto-switch on system preference. */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: 5rem;
 }
 
-:focus-visible {
-  outline: 2px solid var(--university-blue-light);
-  outline-offset: 2px;
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: var(--container-max-width);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  :focus-visible {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: var(--university-blue-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 .skip-link {
@@ -73,10 +175,6 @@ body {
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -87,26 +185,40 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-animate-blob,
+  [class*="animate-"],
+  [class*="transition-"] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }
 
 @keyframes hero-blob {
   0% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate3d(0px, 0px, 0) scale(1);
   }
   33% {
-    transform: translate(30px, -50px) scale(1.1);
+    transform: translate3d(30px, -50px, 0) scale(1.1);
   }
   66% {
-    transform: translate(-20px, 20px) scale(0.9);
+    transform: translate3d(-20px, 20px, 0) scale(0.9);
   }
   100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate3d(0px, 0px, 0) scale(1);
   }
 }
 
 .hero-animate-blob {
-  animation: hero-blob 7s infinite;
+  animation: hero-blob 7s infinite ease-in-out;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-blob-delay-2 {
@@ -117,10 +229,121 @@ html {
   animation-delay: 4s;
 }
 
+@supports (-webkit-appearance: none) {
+  body {
+    -webkit-font-feature-settings: "kern" 1;
+  }
+  
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+@supports (font-variant-ligatures: common-ligatures) {
+  body {
+    font-variant-ligatures: common-ligatures;
+  }
+}
+
+@-moz-document url-prefix() {
+  body {
+    font-weight: var(--font-weight-normal);
+  }
+  
+  img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body {
+    font-family: Arial, sans-serif;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+picture,
+source {
+  display: block;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.grid,
+.flex {
+  min-width: 0;
+}
+
+::selection {
+  background-color: var(--university-blue-light);
+  color: white;
+}
+
+.dark ::selection {
+  background-color: var(--university-blue);
+  color: white;
+}
+
 @media print {
   .skip-link,
   header,
   footer {
     display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
   }
 }

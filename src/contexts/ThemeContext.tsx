@@ -23,7 +23,6 @@ function getStoredTheme(): Theme | null {
 function getResolvedTheme(): Theme {
   const stored = getStoredTheme();
   if (stored) return stored;
-  // Requirement: default site theme is white (light), regardless of system theme.
   return "light";
 }
 
@@ -65,7 +64,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       if (getStoredTheme() === null) {
-        // Default is light; only adjust on system changes if user never chose a theme.
         const next: Theme = media.matches ? "dark" : "light";
         setThemeState(next);
         applyTheme(next);

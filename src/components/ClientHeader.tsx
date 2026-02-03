@@ -10,7 +10,6 @@ export default function ClientHeader() {
     setMounted(true);
   }, []);
 
-  // Avoid SSR/client initial-render mismatch by rendering only after mount.
   if (!mounted) return null;
 
   return <Header />;

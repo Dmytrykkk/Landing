@@ -30,7 +30,8 @@ export default function Hero() {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1920px"
           priority
           fetchPriority="high"
-          quality={80}
+          quality={90}
+          suppressHydrationWarning
         />
         <div
           className="absolute inset-0 bg-gradient-to-b from-[#0047AB]/20 via-transparent to-[#0047AB]/30 dark:from-gray-900/80 dark:via-gray-900/50 dark:to-gray-900/90"
@@ -45,9 +46,11 @@ export default function Hero() {
         >
           Твій код до майбутнього в ІТ — ФКНФМ ХДУ
         </h1>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
-          Онлайн та змішане навчання. Диплом державного зразка. Практика з IT-кластерами.
-        </p>
+        <div className="mb-6 sm:mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-900 dark:text-white font-semibold leading-relaxed px-4 py-3 sm:px-6 sm:py-4 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-xl border border-white/20 dark:border-gray-700/30 [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)] dark:[text-shadow:_0_1px_2px_rgba(0,0,0,0.5)]">
+            Онлайн та змішане навчання. Диплом державного зразка. Практика з IT-кластерами.
+          </p>
+        </div>
 
         <nav aria-label="Головні дії">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
