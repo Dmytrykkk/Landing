@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
 
 export default function Newsletter() {
+  const { t } = useLocale();
+  const n = t.newsletter;
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(true);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -21,14 +24,14 @@ export default function Newsletter() {
       const json = (await res.json()) as { ok: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setError(json.error || "Не вдалося підписатися. Спробуйте ще раз.");
+        setError(json.error || n.errorGeneric);
         return;
       }
       setStatus("success");
       setEmail("");
     } catch {
       setStatus("error");
-      setError("Не вдалося підписатися. Перевірте інтернет-з'єднання.");
+      setError(n.errorNetwork);
     }
   }
 
@@ -42,16 +45,16 @@ export default function Newsletter() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 sm:p-12 lg:p-14 shadow-sm" suppressHydrationWarning>
           <h2 id="newsletter-heading" className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-            Підписка на новини
+            {n.heading}
           </h2>
           <p className="text-gray-700 dark:text-gray-300 mt-4">
-            Отримуйте анонси подій, дедлайни вступу та оновлення програм.
+            {n.description}
           </p>
 
-          <form onSubmit={onSubmit} className="mt-8 space-y-4" aria-label="Форма підписки">
+          <form onSubmit={onSubmit} className="mt-8 space-y-4" aria-label={n.formAria}>
             <div className="flex flex-col sm:flex-row gap-4">
               <label className="flex-grow">
-                <span className="sr-only">Email</span>
+                <span className="sr-only">{n.emailLabel}</span>
                 <input
                   type="email"
                   required
@@ -66,7 +69,7 @@ export default function Newsletter() {
                 disabled={status === "loading"}
                 className="px-8 py-3.5 rounded-lg bg-[#1e40af] dark:bg-[#3b82f6] text-white font-semibold hover:bg-[#1e3a8a] dark:hover:bg-[#2563eb] disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {status === "loading" ? "Підписка…" : "Підписатися"}
+                {status === "loading" ? n.submitting : n.submit}
               </button>
             </div>
 
@@ -78,14 +81,12 @@ export default function Newsletter() {
                 className="mt-1"
                 required
               />
-              <span>
-                Я погоджуюсь отримувати інформаційні листи від університету 
-              </span>
+              <span>{n.consent}</span>
             </label>
 
             {status === "success" ? (
               <div className="text-sm text-green-700 dark:text-green-200 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-                Дякуємо! Ви підписані.
+                {n.successMsg}
               </div>
             ) : null}
             {status === "error" ? (

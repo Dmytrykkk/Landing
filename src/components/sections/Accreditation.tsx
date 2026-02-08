@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale } from "@/contexts/LocaleContext";
 
 export default function Accreditation() {
+  const { t } = useLocale();
+  const a = t.accreditation;
+
   return (
     <section
       id="licenses"
@@ -16,12 +20,11 @@ export default function Accreditation() {
             id="licenses-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-6"
           >
-            Ліцензії та офіційні відомості
+            {a.heading}
           </h2>
 
           <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed text-center" suppressHydrationWarning>
-            Офіційна інформація про ліцензії та акредитації Херсонського державного університету.
-            Детальна інформація про освітні програми, ліцензовані обсяги та акредитації доступна в
+            {a.text}
             {" "}
             <Link
               href="https://registry.edbo.gov.ua/university/48/specialities/"
@@ -29,7 +32,7 @@ export default function Accreditation() {
               rel="noopener noreferrer"
               className="text-[#1e40af] dark:text-[#3b82f6] hover:text-[#1e3a8a] dark:hover:text-[#60a5fa] font-semibold underline underline-offset-4"
             >
-              офіційному реєстрі ЄДЕБО
+              {a.edboLink}
             </Link>
             .
           </p>
@@ -38,4 +41,3 @@ export default function Accreditation() {
     </section>
   );
 }
-

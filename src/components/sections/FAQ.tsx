@@ -1,11 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
+import { defaultLocale, translations } from "@/lib/i18n/translations";
 import { faqItems } from "@/lib/faq-data";
 
 export default function FAQ() {
+  const { locale } = useLocale();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // Use defaultLocale until mounted to avoid server/client hydration mismatch (stored locale is client-only)
+  const t = mounted ? translations[locale] : translations[defaultLocale];
+  const isEn = mounted && locale === "en";
+  const faqs = useMemo(
+    () =>
+      faqItems.map((item) => ({
+        question: isEn ? item.questionEn : item.question,
+        answer: isEn ? item.answerEn : item.answer,
+      })),
+    [isEn]
+  );
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const faqs = faqItems;
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -49,10 +66,11 @@ export default function FAQ() {
         <h2
           id="faq-heading"
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-8 sm:mb-12"
+          suppressHydrationWarning
         >
-          Часті запитання
+          {t.faq.heading}
         </h2>
-        <div className="space-y-2" role="region" aria-labelledby="faq-heading">
+        <div className="space-y-2" role="region" aria-labelledby="faq-heading" suppressHydrationWarning>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const questionId = `faq-question-${index}`;

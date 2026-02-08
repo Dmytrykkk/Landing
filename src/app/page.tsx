@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import {
+  EventsCalendar,
+  Footer,
+  Programs,
+} from "@/components/ClientLazySections";
 import Hero from "@/components/sections/Hero";
 import ScrollTracker from "@/components/ScrollTracker";
 import SectionReveal from "@/components/SectionReveal";
@@ -27,11 +32,6 @@ const WhyFKNFM = dynamic(() => import("@/components/sections/WhyFKNFM"), {
   ssr: true,
 });
 
-const Programs = dynamic(() => import("@/components/sections/Programs"), {
-  loading: () => <SectionSkeleton className="bg-gray-50 dark:bg-gray-800/50" />,
-  ssr: true,
-});
-
 const LearningFormat = dynamic(() => import("@/components/sections/LearningFormat"), {
   loading: () => <SectionSkeleton />,
   ssr: true,
@@ -39,11 +39,6 @@ const LearningFormat = dynamic(() => import("@/components/sections/LearningForma
 
 const SuccessStories = dynamic(() => import("@/components/sections/SuccessStories"), {
   loading: () => <SectionSkeleton />,
-  ssr: true,
-});
-
-const EventsCalendar = dynamic(() => import("@/components/sections/EventsCalendarWrapper"), {
-  loading: () => <SectionSkeleton className="bg-white" />,
   ssr: true,
 });
 
@@ -57,13 +52,13 @@ const Newsletter = dynamic(() => import("@/components/sections/Newsletter"), {
   ssr: true,
 });
 
-const Footer = dynamic(() => import("@/components/sections/footer"), {
+const Partners = dynamic(() => import("@/components/sections/Partners"), {
   loading: () => (
-    <footer className="py-8 bg-gray-100 dark:bg-gray-800" aria-hidden>
+    <section className="py-12 bg-white dark:bg-gray-900" aria-hidden>
       <div className="container mx-auto px-4">
-        <div className="animate-pulse h-24 bg-gray-200 dark:bg-gray-700 rounded" />
+        <div className="animate-pulse h-48 bg-gray-100 dark:bg-gray-800 rounded" />
       </div>
-    </footer>
+    </section>
   ),
   ssr: true,
 });
@@ -222,6 +217,9 @@ export default function HomePage() {
         </SectionReveal>
         <SectionReveal>
           <SuccessStories />
+        </SectionReveal>
+        <SectionReveal>
+          <Partners />
         </SectionReveal>
         <SectionReveal>
           <EventsCalendar />

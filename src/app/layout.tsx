@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LocaleProvider } from "@/contexts/LocaleContext";
 import ClientHeader from "@/components/ClientHeader";
+import ClientSkipLink from "@/components/ClientSkipLink";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -105,6 +107,8 @@ export default function RootLayout({
   var dark=s==='dark';
   document.documentElement.classList.add(dark ? 'dark' : 'light');
   document.documentElement.classList.remove(dark ? 'light' : 'dark');
+  var lang=localStorage.getItem('fknfm-locale');
+  document.documentElement.lang=(lang==='en'?'en':'uk');
 })();
   `.trim();
 
@@ -129,11 +133,11 @@ export default function RootLayout({
           </>
         ) : null}
         <ThemeProvider>
-          <a href="#main-content" className="skip-link">
-            Перейти до основного контенту
-          </a>
-          <ClientHeader />
-          {children}
+          <LocaleProvider>
+            <ClientSkipLink />
+            <ClientHeader />
+            {children}
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

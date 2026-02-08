@@ -1,22 +1,15 @@
+"use client";
+
+import { useLocale } from "@/contexts/LocaleContext";
+
 export default function WhyFKNFM() {
+  const { t } = useLocale();
+  const w = t.whyFKNFM;
   const points = [
-    {
-      title: "Інтеграція в екосистему KSU24",
-      description: "Сучасна цифрова платформа KSU24 об'єднує всі необхідні інструменти та ресурси для ефективного навчального процесу. Студенти мають доступ до єдиного освітнього простору з будь-якої точки світу",
-      link: "https://ksu24.kspu.edu",
-    },
-    {
-      title: "Партнерство з IT-кластером",
-      description: "Співпраця з провідними IT-компаніями України та світу забезпечує актуальність навчальних програм, стажування та гарантоване працевлаштування випускників",
-    },
-    {
-      title: "Академічна мобільність Erasmus+",
-      description: "Можливість навчатися в університетах Європи за програмою Erasmus+, отримувати подвійні дипломи та міжнародний досвід, що відкриває нові кар'єрні можливості",
-    },
-    {
-      title: "Сильний викладацький склад",
-      description: "Практики з провідних IT-компаній, кандидати та доктори наук, які поєднують теоретичні знання з реальним досвідом індустрії. Персональний підхід до кожного студента",
-    },
+    { title: w.point1Title, description: w.point1Desc, link: "https://ksu24.kspu.edu" },
+    { title: w.point2Title, description: w.point2Desc, link: null },
+    { title: w.point3Title, description: w.point3Desc, link: null },
+    { title: w.point4Title, description: w.point4Desc, link: null },
   ];
 
   return (
@@ -30,7 +23,7 @@ export default function WhyFKNFM() {
           id="why-fknfm-heading"
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-8 sm:mb-12"
         >
-          Чому ФКНФМ ХДУ?
+          {w.heading}
         </h2>
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
@@ -54,9 +47,9 @@ export default function WhyFKNFM() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-blue-600 dark:text-blue-400 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded font-medium"
-                  aria-label={`Відкрити ${point.title} у новій вкладці`}
+                  aria-label={`${w.learnMore} — ${w.openInNewTab}`}
                 >
-                  Дізнатися більше
+                  {w.learnMore}
                   <span aria-hidden="true"> →</span>
                 </a>
               )}

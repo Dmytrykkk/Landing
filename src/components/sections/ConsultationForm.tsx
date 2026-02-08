@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useLocale } from "@/contexts/LocaleContext";
 
 declare global {
   interface Window {
@@ -20,6 +21,8 @@ interface FormErrors {
 }
 
 export default function ConsultationForm() {
+  const { t } = useLocale();
+  const c = t.consultationForm;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -49,19 +52,19 @@ export default function ConsultationForm() {
     const newErrors: FormErrors = {};
 
     if (!validateName(formData.name)) {
-      newErrors.name = "Введіть коректне ім'я (від 2 до 100 символів)";
+      newErrors.name = c.errorName;
     }
 
     if (!formData.email || !validateEmail(formData.email)) {
-      newErrors.email = "Введіть коректну email адресу";
+      newErrors.email = c.errorEmail;
     }
 
     if (!formData.phone || !validatePhone(formData.phone)) {
-      newErrors.phone = "Введіть коректний номер телефону (мінімум 10 цифр)";
+      newErrors.phone = c.errorPhone;
     }
 
     if (!formData.program) {
-      newErrors.program = "Оберіть програму навчання";
+      newErrors.program = c.errorProgram;
     }
 
     setErrors(newErrors);
@@ -150,25 +153,25 @@ export default function ConsultationForm() {
           id="consultation-form-heading"
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-4"
         >
-          Запишіться на консультацію
+          {c.heading}
         </h2>
         <p className="text-center text-blue-100 dark:text-gray-300 mb-8">
-          Залиште свої контактні дані, і наші консультанти зв&apos;яжуться з вами
+          {c.subtitle}
         </p>
         <form
           onSubmit={handleSubmit}
           className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-xl"
           noValidate
-          aria-label="Форма консультації"
+          aria-label={c.formAria}
         >
           <fieldset className="space-y-5 sm:space-y-6 border-0 p-0 m-0">
-            <legend className="sr-only">Контактна інформація</legend>
+            <legend className="sr-only">{c.legend}</legend>
             <div>
               <label
                 htmlFor="name"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
               >
-                ПІБ <span className="text-red-600 dark:text-red-400" aria-label="обов&apos;язкове поле">*</span>
+                {c.nameLabel} <span className="text-red-600 dark:text-red-400" aria-label={c.requiredAria}>*</span>
               </label>
               <input
                 type="text"
@@ -185,7 +188,7 @@ export default function ConsultationForm() {
                     ? "border-red-500 dark:border-red-400"
                     : "border-gray-300 dark:border-gray-600"
                 }`}
-                placeholder="Введіть ваше повне ім'я"
+                placeholder={c.namePlaceholder}
               />
               {errors.name && (
                 <p
@@ -204,7 +207,7 @@ export default function ConsultationForm() {
                 htmlFor="email"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
               >
-                Email <span className="text-red-600 dark:text-red-400" aria-label="обов&apos;язкове поле">*</span>
+                {c.emailLabel} <span className="text-red-600 dark:text-red-400" aria-label={c.requiredAria}>*</span>
               </label>
               <input
                 type="email"
@@ -240,7 +243,7 @@ export default function ConsultationForm() {
                 htmlFor="phone"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
               >
-                Телефон <span className="text-red-600 dark:text-red-400" aria-label="обов&apos;язкове поле">*</span>
+                {c.phoneLabel} <span className="text-red-600 dark:text-red-400" aria-label={c.requiredAria}>*</span>
               </label>
               <input
                 type="tel"
@@ -257,7 +260,7 @@ export default function ConsultationForm() {
                     ? "border-red-500 dark:border-red-400"
                     : "border-gray-300 dark:border-gray-600"
                 }`}
-                placeholder="+380 XX XXX XX XX"
+                placeholder={c.phonePlaceholder}
               />
               {errors.phone && (
                 <p
@@ -276,7 +279,7 @@ export default function ConsultationForm() {
                 htmlFor="program"
                 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
               >
-                Програма, що цікавить <span className="text-red-600 dark:text-red-400" aria-label="обов&apos;язкове поле">*</span>
+                {c.programLabel} <span className="text-red-600 dark:text-red-400" aria-label={c.requiredAria}>*</span>
               </label>
               <select
                 id="program"
@@ -293,10 +296,10 @@ export default function ConsultationForm() {
                     : "border-gray-300 dark:border-gray-600"
                 }`}
               >
-                <option value="">Оберіть програму</option>
-                <option value="121">121 Інженерія програмного забезпечення</option>
-                <option value="122">122 Комп&apos;ютерні науки</option>
-                <option value="014.08">014.08 Середня освіта (Інформатика)</option>
+                <option value="">{c.chooseProgram}</option>
+                <option value="121">{c.option121}</option>
+                <option value="122">{c.option122}</option>
+                <option value="014.08">{c.option01408}</option>
               </select>
               {errors.program && (
                 <p
@@ -317,7 +320,7 @@ export default function ConsultationForm() {
                 aria-live="polite"
               >
                 <p className="text-sm font-medium text-green-800 dark:text-green-200">
-                  Дякуємо! Ваша заявка відправлена. Ми зв&apos;яжемося з вами найближчим часом.
+                  {c.successMsg}
                 </p>
               </div>
             )}
@@ -329,7 +332,7 @@ export default function ConsultationForm() {
                 aria-live="assertive"
               >
                 <p className="text-sm font-medium text-red-800 dark:text-red-200">
-                  Помилка при відправці форми. Спробуйте ще раз.
+                  {c.errorMsg}
                 </p>
               </div>
             )}
@@ -340,7 +343,7 @@ export default function ConsultationForm() {
               className="w-full px-8 py-4 bg-[#1e40af] text-white rounded-lg font-semibold hover:bg-[#1e3a8a] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               aria-busy={isSubmitting}
             >
-              {isSubmitting ? "Відправка..." : "Відправити заявку"}
+              {isSubmitting ? c.submitting : c.submit}
             </button>
           </fieldset>
         </form>

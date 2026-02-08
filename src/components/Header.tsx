@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLocale } from "@/contexts/LocaleContext";
+import type { Locale } from "@/lib/i18n/translations";
 
 declare global {
   interface Window {
@@ -13,20 +15,26 @@ declare global {
   }
 }
 
-const NAV_LINKS = [
-  { href: "#why-fknfm", label: "Чому ми" },
-  { href: "#programs", label: "Програми" },
-  { href: "#learning-format", label: "Формат навчання" },
-  { href: "#events", label: "Події" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#licenses", label: "Ліцензії" },
-  { href: "#newsletter", label: "Новини" },
+const NAV_IDS = [
+  { href: "#why-fknfm", key: "why" as const },
+  { href: "#programs", key: "programs" as const },
+  { href: "#learning-format", key: "learningFormat" as const },
+  { href: "#events", key: "events" as const },
+  { href: "#faq", key: "faq" as const },
+  { href: "#licenses", key: "licenses" as const },
+  { href: "#partners", key: "partners" as const },
+  { href: "#newsletter", key: "newsletter" as const },
 ] as const;
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme, mounted } = useTheme();
+  const { locale, setLocale, t } = useLocale();
+  const navLinks = useMemo(
+    () => NAV_IDS.map(({ href, key }) => ({ href, label: t.nav[key] })),
+    [t]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +87,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white dark:bg-gray-900 shadow-md"
-          : "bg-transparent"
+          : "bg-gray-900/80 backdrop-blur-sm"
       }`}
       role="banner"
       aria-label="Головна навігація"
@@ -89,7 +97,11 @@ export default function Header() {
           <div className="flex items-center">
             <a
               href="#main-content"
-              className="text-xl sm:text-2xl font-bold text-[#1e40af] dark:text-[#3b82f6] hover:text-[#1e3a8a] dark:hover:text-[#60a5fa] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded transition-colors"
+              className={`text-xl sm:text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 rounded transition-colors ${
+                isScrolled
+                  ? "text-[#1e40af] dark:text-[#3b82f6] hover:text-[#1e3a8a] dark:hover:text-[#60a5fa]"
+                  : "text-white hover:text-blue-200"
+              }`}
               aria-label="Перейти на початок сторінки"
             >
               ФКНФМ ХДУ
@@ -97,11 +109,15 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            {NAV_LINKS.map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
-                className="text-gray-700 dark:text-gray-300 hover:text-[#1e40af] dark:hover:text-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded transition-colors text-sm lg:text-base"
+                className={`focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 rounded transition-colors text-sm lg:text-base ${
+                  isScrolled
+                    ? "text-gray-700 dark:text-gray-300 hover:text-[#1e40af] dark:hover:text-[#3b82f6]"
+                    : "text-white/95 hover:text-white"
+                }`}
               >
                 {label}
               </a>
@@ -112,7 +128,11 @@ export default function Header() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 transition-colors"
+              className={`p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60a5fa] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-colors ${
+                isScrolled
+                  ? "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  : "text-white/95 hover:bg-white/10"
+              }`}
               aria-label={mounted ? (theme === "dark" ? "Увімкнути світлу тему" : "Увімкнути темну тему") : "Перемкнути тему"}
               title={mounted ? (theme === "dark" ? "Світла тема" : "Темна тема") : "Тема"}
             >
@@ -132,17 +152,43 @@ export default function Header() {
               )}
             </button>
 
+            <div className="flex items-center gap-1 mr-2" role="group" aria-label="Мова">
+              {(["uk", "en"] as Locale[]).map((loc) => (
+                <button
+                  key={loc}
+                  type="button"
+                  onClick={() => setLocale(loc)}
+                  className={`px-2 py-1 rounded text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 transition-colors ${
+                    isScrolled
+                      ? locale === loc
+                        ? "text-[#1e40af] dark:text-[#3b82f6] bg-blue-50 dark:bg-gray-800"
+                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                      : locale === loc
+                        ? "bg-white/20 text-white"
+                        : "text-white/80 hover:text-white"
+                  }`}
+                  aria-label={loc === "uk" ? t.langUk : t.langEn}
+                  aria-current={locale === loc ? "true" : undefined}
+                >
+                  {loc === "uk" ? "UA" : "EN"}
+                </button>
+              ))}
+            </div>
             <button
               onClick={handleCTAClick}
-              className="hidden md:inline-flex px-4 sm:px-6 py-2 sm:py-2.5 bg-[#1e40af] text-white rounded-lg font-semibold hover:bg-[#1e3a8a] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors text-sm sm:text-base whitespace-nowrap"
-              aria-label="Вступити до університету"
+              className="hidden md:inline-flex px-4 sm:px-6 py-2 sm:py-2.5 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors text-sm sm:text-base whitespace-nowrap"
+              aria-label={t.nav.admission}
             >
-              Вступ
+              {t.nav.admission}
             </button>
 
             <button
               type="button"
-              className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2"
+              className={`md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 ${
+                isScrolled
+                  ? "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  : "text-white/95 hover:bg-white/10"
+              }`}
               aria-label={menuOpen ? "Закрити меню" : "Відкрити меню"}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen}
@@ -183,7 +229,7 @@ export default function Header() {
         >
           <nav aria-label="Мобільна навігація" className="py-4 px-4">
             <ul className="space-y-1">
-              {NAV_LINKS.map(({ href, label }) => (
+              {navLinks.map(({ href, label }) => (
                 <li key={href}>
                   <a
                     href={href}
@@ -200,7 +246,7 @@ export default function Header() {
                   onClick={handleCTAClick}
                   className="w-full text-left px-4 py-3 rounded-lg bg-[#1e40af] text-white font-semibold hover:bg-[#1e3a8a] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-inset transition-colors"
                 >
-                  Вступ
+                  {t.nav.admission}
                 </button>
               </li>
             </ul>

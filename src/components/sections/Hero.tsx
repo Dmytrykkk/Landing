@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-
+import { useLocale } from "@/contexts/LocaleContext";
 
 const HERO_IMAGE_SRC = "/images/hero.webp";
 
 export default function Hero() {
+  const { t } = useLocale();
   const handleCTAClick = (label: string) => {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "cta_click", {
@@ -33,8 +34,9 @@ export default function Hero() {
           quality={90}
           suppressHydrationWarning
         />
+        {/* WCAG AA: dark overlay ensures 4.5:1+ contrast for white text on any screen */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#0047AB]/20 via-transparent to-[#0047AB]/30 dark:from-gray-900/80 dark:via-gray-900/50 dark:to-gray-900/90"
+          className="absolute inset-0 bg-gradient-to-b from-gray-900/85 via-gray-900/70 to-gray-900/90"
           aria-hidden
         />
       </div>
@@ -42,13 +44,13 @@ export default function Hero() {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center">
         <h1
           id="hero-heading"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
         >
-          Твій код до майбутнього в ІТ — ФКНФМ ХДУ
+          {t.hero.title}
         </h1>
         <div className="mb-6 sm:mb-8 max-w-3xl mx-auto">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-900 dark:text-white font-semibold leading-relaxed px-4 py-3 sm:px-6 sm:py-4 rounded-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-xl border border-white/20 dark:border-gray-700/30 [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)] dark:[text-shadow:_0_1px_2px_rgba(0,0,0,0.5)]">
-            Онлайн та змішане навчання. Диплом державного зразка. Практика з IT-кластерами.
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold leading-relaxed px-4 py-3 sm:px-6 sm:py-4 rounded-xl bg-gray-900/90 backdrop-blur-md shadow-xl border border-white/20 [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
+            {t.hero.subtitle}
           </p>
         </div>
 
@@ -57,22 +59,22 @@ export default function Hero() {
             <a
               href="#consultation-form"
               onClick={() => handleCTAClick("hero_diznatysia_bilshe")}
-              className="inline-flex items-center justify-center w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3.5 sm:py-4 bg-[#0047AB] text-white rounded-lg font-semibold shadow-md hover:bg-[#003380] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0047AB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 transition-all duration-200 text-base sm:text-lg"
-              aria-label="Дізнатися більше про навчання та залишити заявку"
+              className="inline-flex items-center justify-center w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3.5 sm:py-4 bg-[#2563eb] text-white rounded-lg font-semibold shadow-md hover:bg-[#1d4ed8] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60a5fa] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-all duration-200 text-base sm:text-lg"
+              aria-label={t.hero.ctaLearn}
               role="button"
             >
-              Дізнатися більше
+              {t.hero.ctaLearn}
             </a>
             <a
               href="https://t.me/kipiek"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleCTAClick("hero_telegram")}
-              className="inline-flex items-center justify-center w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3.5 sm:py-4 bg-white dark:bg-gray-800 text-[#0047AB] dark:text-blue-300 border-2 border-[#0047AB] dark:border-blue-500 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-gray-700 hover:border-[#003380] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0047AB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 transition-all duration-200 text-base sm:text-lg"
-              aria-label="Вступити до Telegram-каналу ФКНФМ (відкривається в новій вкладці)"
+              className="inline-flex items-center justify-center w-full sm:w-auto min-w-[200px] px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-[#1e40af] border-2 border-white rounded-lg font-semibold hover:bg-blue-50 hover:border-blue-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60a5fa] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 transition-all duration-200 text-base sm:text-lg"
+              aria-label={t.hero.ctaTelegram}
               role="button"
             >
-              Telegram-канал
+              {t.hero.ctaTelegram}
             </a>
           </div>
         </nav>
