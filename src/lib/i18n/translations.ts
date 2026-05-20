@@ -21,7 +21,11 @@ export const translations = {
       admission: "Вступ",
     },
     hero: {
-      title: "Факультет комп'ютерних наук, фізики та математики Херсонського державного університету — твій код до майбутнього в ІТ",
+      title: [
+        "Факультет комп'ютерних наук, фізики та математики",
+        "Херсонського державного університету",
+        "— твій код до майбутнього в ІТ",
+      ],
       subtitle:
         "Онлайн та змішане навчання. Диплом державного зразка. Практика з IT-кластерами.",
       ctaLearn: "Дізнатися більше",
@@ -197,7 +201,11 @@ export const translations = {
       admission: "Admission",
     },
     hero: {
-      title: "Faculty of Computer Science, Physics and Mathematics of Kherson State University — your code to the future in IT",
+      title: [
+        "Faculty of Computer Science, Physics and Mathematics", 
+        "of Kherson State University", 
+        "— your code to the future in IT",
+      ],
       subtitle:
         "Online and blended learning. State diploma. Practice with IT clusters.",
       ctaLearn: "Learn more",
