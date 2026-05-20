@@ -203,7 +203,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
       />
-      <main id="main-content" tabIndex={-1} className="bg-[#1e2939]">
+      <main id="main-content" tabIndex={-1} className="bg-white dark:bg-[#1e2939]">
         <ScrollTracker />
         <Hero />
         <SectionReveal>
