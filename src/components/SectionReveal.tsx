@@ -19,10 +19,10 @@ export default function SectionReveal({ children, className = "" }: SectionRevea
   return (
     <div
       ref={ref}
-      className={`transition-transform duration-700 ease-out ${
+      className={`transition-all duration-700 ease-out ${
         mounted && isInView
-          ? "translate-y-0"
-          : "translate-y-6 motion-reduce:translate-y-0"
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-6 motion-reduce:opacity-100 motion-reduce:translate-y-0"
       } ${className}`}
     >
       {children}
