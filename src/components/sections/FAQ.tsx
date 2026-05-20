@@ -80,13 +80,13 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
-              >
+                className="bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] dark:from-gray-800 dark:to-gray-700 border-2 border-[#bfdbfe] dark:border-gray-600 rounded-lg overflow-hidden hover:border-[#3b82f6] dark:hover:border-blue-500 hover:shadow-lg transition-all"
+             >
                 <h3>
                   <button
                     id={buttonId}
                     type="button"
-                    className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors aria-expanded:bg-gray-50 dark:aria-expanded:bg-gray-800"
+                    className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     onClick={() => toggleItem(index)}
@@ -128,7 +128,7 @@ export default function FAQ() {
                     isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="px-4 sm:px-6 py-4 sm:py-5 bg-gray-50 dark:bg-gray-800">
+                  <div className="px-4 sm:px-6 py-4 sm:py-5 bg-white/60 dark:bg-gray-900/40">
                     <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                       {faq.answer}
                     </p>
