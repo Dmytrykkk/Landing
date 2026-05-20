@@ -21,7 +21,7 @@ export const translations = {
       admission: "Вступ",
     },
     hero: {
-      title: "Твій код до майбутнього в ІТ — ФКНФМ ХДУ",
+      title: "Твій код до майбутнього в ІТ — Факультет комп'ютерних наук, фізики та математики Херсонського державного університету",
       subtitle:
         "Онлайн та змішане навчання. Диплом державного зразка. Практика з IT-кластерами.",
       ctaLearn: "Дізнатися більше",
@@ -165,7 +165,7 @@ export const translations = {
       ariaLabel: "Підвал сайту",
       blockTitle: "ФКНФМ ХДУ",
       blockDesc:
-        "Факультет комп'ютерних наук та фізико-математичний факультет Херсонського державного університету. Сучасна IT-освіта з гарантією працевлаштування.",
+        "Факультет комп'ютерних наук, фізикита математики Херсонського державного університету. Сучасна IT-освіта з гарантією працевлаштування.",
       universityName: "Херсонський державний університет",
       navHeading: "Навігація",
       admissionHeading: "Приймальна комісія",
@@ -197,7 +197,7 @@ export const translations = {
       admission: "Admission",
     },
     hero: {
-      title: "Your code to the future in IT — FCNFM KSU",
+      title: "Your code to the future in IT — Faculty of Computer Science, Physics and Mathematics of Kherson State University",
       subtitle:
         "Online and blended learning. State diploma. Practice with IT clusters.",
       ctaLearn: "Learn more",
@@ -259,7 +259,7 @@ export const translations = {
       details: "Details",
     },
     whyFKNFM: {
-      heading: "Why FCNFM KSU?",
+      heading: "Why FCSPM KSU?",
       point1Title: "Integration with KSU24 ecosystem",
       point1Desc:
         "The modern KSU24 digital platform brings together all the tools and resources needed for effective learning. Students have access to a single educational space from anywhere in the world.",
@@ -339,9 +339,9 @@ export const translations = {
       officialSite: "Official university website",
       copyright: "Kherson State University. All rights reserved.",
       ariaLabel: "Site footer",
-      blockTitle: "FCNFM KSU",
+      blockTitle: "FCSPM KSU",
       blockDesc:
-        "Faculty of Computer Science and Physics & Mathematics Faculty of Kherson State University. Modern IT education with employment guarantee.",
+        "Faculty of Computer Science, Physics & Mathematics of Kherson State University. Modern IT education with employment guarantee.",
       universityName: "Kherson State University",
       navHeading: "Navigation",
       admissionHeading: "Admissions office",
