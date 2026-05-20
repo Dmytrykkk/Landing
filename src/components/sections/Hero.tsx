@@ -46,7 +46,9 @@ export default function Hero() {
           id="hero-heading"
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
         >
-          {t.hero.title}
+          {t.hero.title.map((line, i) => (
+            <span key={i}>{line}{i < t.hero.title.length - 1 && <br />}</span>
+          ))}
         </h1>
         <div className="mb-6 sm:mb-8 max-w-3xl mx-auto">
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold leading-relaxed px-4 py-3 sm:px-6 sm:py-4 rounded-xl bg-gray-900/90 backdrop-blur-md shadow-xl border border-white/20 [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
