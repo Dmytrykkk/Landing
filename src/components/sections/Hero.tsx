@@ -19,7 +19,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0047AB]/5 via-slate-50 to-blue-50/80 dark:from-gray-900 dark:via-gray-900 dark:to-[#0047AB]/10"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0047AB]/5 via-slate-50 to-blue-50/80 dark:from-gray-900 dark:via-gray-900 dark:to-[#0047AB]/10"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 z-0">
