@@ -145,7 +145,7 @@ export default function ConsultationForm() {
   return (
     <section
       id="consultation-form"
-      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#2563eb] via-[#1d4ed8] to-[#2563eb] dark:from-gray-800 dark:via-gray-900 dark:to-gray-800"
+      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#3b82f6] via-[#2563eb] to-[#3b82f6] dark:from-gray-800 dark:via-gray-900 dark:to-gray-800"
       aria-labelledby="consultation-form-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
