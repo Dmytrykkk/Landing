@@ -155,7 +155,7 @@ export default function ConsultationForm() {
         >
           {c.heading}
         </h2>
-        <p className="text-center text-[#003e75] dark:text-gray-300 mb-8"
+        <p className="text-center text-[#003e75] dark:text-gray-300 mb-8">
           {c.subtitle}
         </p>
         <form
