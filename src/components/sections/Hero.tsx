@@ -41,7 +41,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center">
+      <div className=className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center mt-16 sm:mt-20">
         <h1
           id="hero-heading"
           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
