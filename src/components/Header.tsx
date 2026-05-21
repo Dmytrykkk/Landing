@@ -97,7 +97,7 @@ export default function Header() {
           <div className="flex items-center">
             <a
               href="#main-content"
-              className={`text-xl sm:text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 rounded transition-colors ${
+              className={`text-xl sm:text-2xl font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60a5fa] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded transition-colors ${
                 isScrolled
                   ? "text-[#1e40af] dark:text-[#3b82f6] hover:text-[#1e3a8a] dark:hover:text-[#60a5fa]"
                   : "text-white hover:text-blue-200"
