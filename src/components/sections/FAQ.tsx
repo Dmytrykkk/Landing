@@ -86,7 +86,7 @@ export default function FAQ() {
                   <button
                     id={buttonId}
                     type="button"
-                    className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-colors"
+                    className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 transition-colors"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     onClick={() => toggleItem(index)}
