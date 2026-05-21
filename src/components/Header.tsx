@@ -108,7 +108,7 @@ export default function Header() {
             </a>
           </div>
 
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
@@ -176,7 +176,7 @@ export default function Header() {
             </div>
             <button
               onClick={handleCTAClick}
-              className="hidden md:inline-flex px-4 sm:px-6 py-2 sm:py-2.5 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors text-sm sm:text-base whitespace-nowrap"
+              className="hidden lg:inline-flex px-4 sm:px-6 py-2 sm:py-2.5 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors text-sm sm:text-base whitespace-nowrap"
               aria-label={t.nav.admission}
             >
               {t.nav.admission}
@@ -184,7 +184,7 @@ export default function Header() {
 
             <button
               type="button"
-              className={`md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 ${
+              className={`lg:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#60a5fa] focus:ring-offset-2 ${
                 isScrolled
                   ? "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   : "text-white/95 hover:bg-white/10"
@@ -211,7 +211,7 @@ export default function Header() {
 
       <div
         id="mobile-menu"
-        className={`md:hidden fixed inset-0 top-16 sm:top-20 z-40 transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 top-16 sm:top-20 z-40 transition-opacity duration-300 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
